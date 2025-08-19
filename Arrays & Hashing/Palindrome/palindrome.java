@@ -1,3 +1,4 @@
+// This is a two pointer approach
 class Solution {
     public boolean isPalindrome(String s) {
         char[] arr = s.toCharArray();
