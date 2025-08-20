@@ -21,6 +21,7 @@ class Solution {
 }
 
 // Time Complexity = O(log(m*n))
+// Treats the 2-D matrix as a 1-D array and maps the 1-D index to 2-D row & col
 class Solution {
     public boolean searchMatrix(int[][] matrix, int target) {
         int m = matrix.length;
@@ -39,6 +40,30 @@ class Solution {
             else
                 right = mid - 1;
         }
+        return false;
+    }
+}
+
+// Time Complexity = O(m+n)
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        int m = matrix.length;
+        int n = matrix[0].length;
+
+        int row = 0, col = n - 1;  // start at top-right corner
+
+        while (row < m && col >= 0) {
+            int val = matrix[row][col];
+
+            if (val == target) {
+                return true;
+            } else if (val > target) {
+                col--;  // eliminate this column
+            } else {
+                row++;  // eliminate this row
+            }
+        }
+
         return false;
     }
 }
